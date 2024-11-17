@@ -11,7 +11,7 @@ interface ButtonInterfaceProps {
     children?: ReactElement;
     className?: string;
 }
-
+// NOTE: Type for mapping button sizes to their corresponding Tailwind classes
 type SizeStyleType = {
     [K in ButtonInterfaceProps["size"]]: string;
 };
@@ -42,6 +42,8 @@ const variantStyle: VariantStyleType = {
 const defaultButtonStyle = "px-2 py-1 text-md bg-blue-500 text-white rounded items-center"
 
 export function Button(props: ButtonInterfaceProps) {
+    //NOTE: Merge the default button style with size, variant, and custom classes using twMerge
+    // to handle Tailwind class conflicts and duplicates
     const buttonClassesMerge = twMerge(
         defaultButtonStyle,
         sizeStyle[props.size],
@@ -50,7 +52,10 @@ export function Button(props: ButtonInterfaceProps) {
     )
 
     return (
-        // <button className={`${sizeStyle[props.size]} ${variantStyle[props.variant]} ${defaultButtonStyle} ${props.className}`} onClick={props.onChange}>
+        {/* NOTE: Old implementation using template literals - kept for reference */}
+        {/* <button className={`${sizeStyle[props.size]} ${variantStyle[props.variant]} ${defaultButtonStyle} ${props.className}`} onClick={props.onChange}> */}
+        
+        {/* Using twMerge to properly handle Tailwind class conflicts and duplicates */}
         <button className={buttonClassesMerge} onClick={props.onChange}>
             <div className="flex items-center justify-center gap-1">
                 {props.startIcon && <span className="mt-[2px]">{props.startIcon}</span>}
