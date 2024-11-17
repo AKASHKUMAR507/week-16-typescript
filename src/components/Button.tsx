@@ -52,16 +52,18 @@ export function Button(props: ButtonInterfaceProps) {
     )
 
     return (
-        {/* NOTE: Old implementation using template literals - kept for reference */}
-        {/* <button className={`${sizeStyle[props.size]} ${variantStyle[props.variant]} ${defaultButtonStyle} ${props.className}`} onClick={props.onChange}> */}
-        
-        {/* Using twMerge to properly handle Tailwind class conflicts and duplicates */}
-        <button className={buttonClassesMerge} onClick={props.onChange}>
-            <div className="flex items-center justify-center gap-1">
-                {props.startIcon && <span className="mt-[2px]">{props.startIcon}</span>}
-                <div>{props.title}</div>
-                {props.endIcon && <span className="mt-[2px]">{props.endIcon}</span>}
-            </div>
-        </button>
+        <>
+            {/* NOTE: Old implementation using template literals - kept for reference */}
+            {/* <button className={`${sizeStyle[props.size]} ${variantStyle[props.variant]} ${defaultButtonStyle} ${props.className}`} onClick={props.onChange}> */}
+
+            {/* Using twMerge to properly handle Tailwind class conflicts and duplicates */}
+            <button className={buttonClassesMerge} onClick={props.onChange}>
+                <div className="flex items-center justify-center gap-1">
+                    {props.startIcon && <span className="mt-[2px]">{props.startIcon}</span>}
+                    <div>{props.title}</div>
+                    {props.endIcon && <span className="mt-[2px]">{props.endIcon}</span>}
+                </div>
+            </button>
+        </>
     )
 }
